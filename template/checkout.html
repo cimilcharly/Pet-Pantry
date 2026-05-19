@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+   {% load static %}
+
+    <meta charset="utf-8">
+    <title>PET SHOP - Pet Shop Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+   <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm py-3 py-lg-0 px-3 px-lg-0">
+        <a href="index" class="navbar-brand ms-lg-5">
+            <h1 class="m-0 text-uppercase text-dark"><i class="bi bi-shop fs-1 text-primary me-3"></i>Hi {{request.session.user}}</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0">
+                <a href="../user_h" class="nav-item nav-link ">Home</a>
+                <a href="../product" class="nav-item nav-link active">Products</a>
+                <a href="../cart" class="nav-item nav-link ">Cart</a>
+                <a href="../wishlist" class="nav-item nav-link ">Wishlist</a>
+                <a href="../myorder" class="nav-item nav-link ">My Order</a>
+                <a href="../profile" class="nav-item nav-link ">Profile</a>
+                <a href="../logout" class="nav-item nav-link ">Log Out</a>
+
+
+                <a href="contact" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Contact <i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+     <div class="container-fluid py-5">
+    <div class="container">
+        <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
+            <h1 class="display-5 text-uppercase mb-0">Place Order</h1>
+        </div>
+
+
+
+<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+
+					<div class="col-md-7">
+						<!-- Billing Details -->
+						<div class="billing-details">
+<!--							<div class="section-title">-->
+								<h3 class="title">SHIPPING ADDRESS</h3><hr>
+							</div>
+							<form action="" method="POST">
+								{% csrf_token %}
+							<div class="form-group">
+								<input class="input"  type="text" name="chname" placeholder="Name" required
+									  >
+							</div>
+							<div class="form-group">
+								<input class="input" type="text" name="chaddress" placeholder="Address"  required>
+							</div>
+							<div class="form-group">
+								<input class="input" type="text" name="chcity" placeholder="City"  required>
+							</div>
+							<div class="form-group">
+								<input class="input" type="text" name="chstate" placeholder="State"  required>
+							</div>
+							<div class="form-group">
+								<input class="input" type="text" name="chcountry" placeholder="Country"  required>
+							</div>
+							<div class="form-group">
+								<input class="input" type="tel" name="chzipcode" placeholder="Pincode" pattern="[0-9]{6,6}" title="A valid pincode contains 6 digits" required>
+							</div>
+							<div class="form-group">
+								<input class="input" type="tel" name="chphone" placeholder="Phone" pattern="[0-9]{10,10}" title="A valid phone number contains 10 digits" required>
+							</div>
+							<div class="form-group">
+								<div class="input-checkbox">
+								</div>
+
+							</div>
+                          		</div>
+						<!-- /Billing Details -->
+
+						<!-- Shipping Details -->
+
+						<!-- /Shipping Details -->
+
+						<!-- Order notes -->
+
+						<!-- /Order notes -->
+					</div>
+<br>
+
+
+					<!-- Order Details -->
+					<div class="col-md-5 order-details">
+<!--						<div class="section-title text-center">-->
+							<h3 class="title">PAYMENT</h3><hr><br>
+						</div>
+						<div class="order-summary">
+							<div class="order-col">
+								<div><strong style="color:black;">PRODUCT:</strong>
+								<input style="border:hidden;position:absolute;text-align:left;" type="text" value="{{data.Product_name}}" name="chpro" ></div>
+
+								<div><strong style="color:black;">PRICE:</strong>
+																<input style="border:hidden;position:absolute;text-align:left;:283px;" type="text" value="{{data.Price}}₹" id="a"></div>
+							</div>
+							<div class="order-col">
+
+							</div>
+
+<!--&lt;!&ndash;					-->
+							<br>
+							<form action="" method="POST">
+								{% csrf_token %}
+								<div class="order-col">
+									<div style="color:black;">Quantity:
+									<input style="width:40px;text-align:center;" type="text" id="b" value="1" oninput="add()" name="chqty" readonly></div>
+								</div>
+
+<br>
+
+								<div class="order-col">
+
+								<div><strong style="color:black;">FREE Shipping</strong></div>
+							</div>
+							<div class="order-col">
+								<div style="padding-top:30px; color:black;"><strong>TOTAL:</strong>
+								<strong class="order-total"><input style="border:hidden;width:150px;text-align:left;" value="{{data.Price}}" name="chtotal" type="text"></strong></div>
+<!--								<div style="border:hidden;width:150px;"order-total><input style="border:hidden;width:150px;text-align:right;position:absolute;left:310px;top:257px;" value="{{data.Price}}" type="text" id="c" name="chtotal"></strong></div>-->
+							</div>
+
+						<button type="submit" style="width:430px;" class="primary-btn order-submit">Place order</button>
+				</form>
+					<!-- /Order Details -->
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+			</div>
+
+
+		<!-- /SECTION -->
+
+<script>
+function add() {
+  var x = parseInt(document.getElementById("a").value);
+  var y = parseInt(document.getElementById("b").value)
+  document.getElementById("c").value = x * y;
+}
+</script>
+
+
+
+
+
+
+
+
+<br>
+<br>
+<br>
+
+     </div>
+</body>
+</html>

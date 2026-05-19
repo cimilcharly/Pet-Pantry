@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+      <script type="text/javascript">
+    window.onload=function(){//from ww  w . j  a  va2s. c  o  m
+var today = new Date().toISOString().split('T')[0];
+document.getElementsByName("setTodaysDate")[0].setAttribute('min', today);
+    }
+
+      </script>
+</head>
+<body>
+	<!-- SECTION -->
+<div class="section">
+			<!-- container -->
+			<div class="container" style="width:1500px;">
+				<!-- row -->
+				<div class="row">
+<form action="" method="POST">
+    {% csrf_token %}
+    <div style="position:absolute; left:300px; top:100px;">
+        <label><h3>Order Status</h3></label>
+        <select name="odsts" style="position:absolute; left:320px; width:400px; height:30px;">
+            <option>Choose Status</option>
+            <option value="Preparing">Preparing</option>
+            <option value="Packing">Packing</option>
+            <option value="Ready For Delivery">Ready</option>
+            <option value="Out For Delivery">Out For Delivery</option>
+            <option value="Delivered">Delivered</option>
+        </select>
+    </div>
+        <div style="position:absolute; left:300px; top:200px;">
+        <label><h3>Instructions</h3></label>
+        <input style="position:absolute; left:320px; width:400px; height:30px;" type="text" name="inst" value="{{data.instruction}}">
+    </div>
+    <br><br><br>
+    <div style="position:absolute; left:300px; top:300px;">
+        <label><h3>Date</h3></label>
+        <input style="position:absolute; top:40px;" type="date" name="setTodaysDate"/>
+    </div>
+    <div style="position:absolute; left:300px; top:400px;">
+        <button class="primary-btn order-submit" type="submit" style="width:150px; height:40px; background-color:#007bff; color:#fff; border:none; cursor:pointer;">
+            Update Status
+        </button>
+    </div>
+
+</form>
+
+
+				</div>
+			</div>
+		</div>
+						<!-- Billing Details -->
+
+
+</body>
+</html>
