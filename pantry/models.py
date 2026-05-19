@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Register(models.Model):
     name=models.CharField(max_length=20)
-    phone=models.IntegerField()
+    phone=models.BigIntegerField()
     email=models.EmailField()
     address=models.CharField(max_length=505)
     username=models.CharField(max_length=20)
@@ -60,7 +60,7 @@ class PasswordReset(models.Model):
 class deliveryboy(models.Model):
     name=models.CharField(max_length=30)
     email=models.EmailField()
-    phno=models.IntegerField()
+    phno=models.BigIntegerField()
     username=models.CharField(max_length=20)
     password=models.CharField(max_length=20)
     proof=models.FileField()
